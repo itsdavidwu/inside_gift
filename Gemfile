@@ -6,13 +6,9 @@ gem 'rails', '4.0.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
-# Use SCSS for stylesheets
+gem 'bootstrap-sass', '~> 3.3.1'
 gem 'sass-rails', '~> 4.0.2'
-
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -20,7 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
+gem 'fancybox2-rails', '~> 0.2.8'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 
@@ -36,7 +32,15 @@ gem 'amazon-ecs'
 gem 'json'
 gem 'httparty'
 gem 'nokogiri'
+gem 'pry'
 
+gem 'will_paginate-bootstrap'
+gem 'jquery-turbolinks'
+gem 'impressionist'
+
+gem 'gibbon'
+
+gem 'high_voltage', '~> 2.2.1'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

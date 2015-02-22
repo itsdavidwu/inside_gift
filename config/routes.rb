@@ -1,6 +1,10 @@
 InsideGift::Application.routes.draw do
+  root to: 'items#index'
+  post 'emailapi/subscribe' => 'emailapi#subscribe'
+  get '/featured', to: 'items#featured'
+  get '/search', to: 'items#search'
 
-  resources :items
+  resources :items, :categories, :occasions
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

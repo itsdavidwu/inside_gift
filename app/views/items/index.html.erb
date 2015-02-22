@@ -1,0 +1,84 @@
+
+<!--
+	  <%  if params[:recipient].present? && params[:price].present?%>
+
+	    <h1>Trending Gifts for <%= params[:recipient].pluralize.titleize %> Under $<%= params[:price] %></h1>
+
+	  <% elsif params[:recipient].present? %>
+		<h1>Trending Gifts for <%= params[:recipient].pluralize.titleize %></h1>
+
+	  <% elsif 	params[:price].present? %>
+	    <h1>Trending Gifts Under $<%= params[:price] %></h1>
+
+	  <% else %>
+
+	  <h1> Browse by some of our top categories </h1>
+
+	  <% end %>
+
+-->
+
+	<div class = "row filter_row">
+		<div class = "filters">
+
+			<div class = "col-sm-9 col-xs-0 filter-group">
+			</div>
+
+			<div class = "col-sm-2 col-xs-6 filter-group">
+
+					<div class="input-group-btn">
+				     <button type="button" class="btn btn-default dropdown-toggle filterz" data-toggle="dropdown">
+				       Recipient
+				       <span class="caret"></span>
+				     </button>
+				     <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="dropdownMenuDivider">
+
+				       <li role="presentation"><%= link_to "Friend", root_path(params.merge({:recipient => "friend"})) %></li>
+				       <li role="presentation"><%= link_to "Grandmother", root_path(params.merge({:recipient => "grandmother"})) %></li>
+				       <li role="presentation"><%= link_to "Girlfriend", root_path(params.merge({:recipient => "girlfriend"})) %></li>
+				       <li role="presentation"><%= link_to "Mother", root_path(params.merge({:recipient => "mother"})) %></li>
+				       <li role="presentation"><%= link_to "Sister", root_path(params.merge({:recipient => "sister"})) %></li>
+				       <li role="presentation"><%= link_to "Wife", root_path(params.merge({:recipient => "wife"})) %></li>
+				       <li role="presentation" class="divider"></li>
+				       <li role="presentation"><%= link_to "All", root_path %></li>
+
+				     </ul>
+				   </div>
+			</div>
+
+			<div class = "col-sm-1 col-xs-6 filter-group">
+
+
+
+			  	<div class="input-group-btn">
+			     <button type="button" class="btn btn-default dropdown-toggle filterz" data-toggle="dropdown">
+			       Price
+			       <span class="caret"></span>
+			     </button>
+			     <ul class="dropdown-menu pull-left">
+			       <li><%= link_to "Under $25", root_path(params.merge({:price => 25})) %></li>
+			       <li><%= link_to "Under $50", root_path(:price => 50) %></li>
+			       <li><%= link_to "Under $100", root_path(:price => 100) %></li>
+			       <li><%= link_to "Under $200", root_path(:price => 200) %></li>
+			     </ul>
+			   </div>
+
+			</div>
+
+
+		</div>
+	</div>
+
+
+		<div class = "row product-row">
+				 <%= render @items %>
+		</div>
+
+
+
+<div id = "flickr_pagination">
+	<%= will_paginate @items %>
+</div>
+
+
+

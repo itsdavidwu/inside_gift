@@ -12,5 +12,77 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require turbolinks
+//= require jquery
+//= require bootstrap-sprockets
+//= require fancybox
 //= require_tree .
+
+$(document).ready(function() {
+
+
+  if (window.frameElement) {
+    $(".navbar").hide();
+    $(".footer").hide();
+    $(".alert").hide();
+    document.getElementById("boom").style.marginLeft = "0px";
+    document.getElementById("boom").style.marginRight = "0px";
+    document.getElementById("boom").style.paddingLeft = "0px";
+    document.getElementById("boom").style.paddingRight = "0px";
+    document.getElementById("fluider").style.paddingRight = "0px";
+    document.getElementById("fluider").style.paddingLeft = "0px";
+    document.getElementById("boom2").style.paddingLeft = "0px";
+    document.getElementById("boom2").style.paddingRight = "0px";
+  }
+  else {
+
+  }
+
+
+  $("a.fancy1").fancybox(
+  {
+	'width': '90%',
+	'type':'iframe',
+	'scrolling': 'no',
+  'padding': 0,
+	'iframe': {'scrolling': 'no'},
+	 'aspectRatio' : true,
+    'margin' : [0, 30, 0, 25] ,
+    'transitionIn'      : 'elastic',
+    'transitionOut'     : 'elastic',
+    'keys': { 'close'  : [27] }
+  });
+
+
+  $("a.fancy2").fancybox(
+  {
+  'width': '90%',
+  'type':'iframe',
+  'scrolling': 'no',
+  'padding': 0,
+  'iframe': {'scrolling': 'no'},
+   'aspectRatio' : true,
+    'margin' : [0, 30, 0, 25] ,
+    'transitionIn'      : 'elastic',
+    'transitionOut'     : 'elastic',
+    'keys': { 'close'  : [27] }
+  });
+
+  $("a.fancy2").click(function(e) {
+    e.preventDefault();
+    var link = $(this).attr("href");
+    window.self.location = link;
+  });
+
+
+
+  var visiteddd = localStorage.getItem('visiteddd');
+  if (!visiteddd) {
+    $('.headline').collapse('show');
+    localStorage.setItem('visiteddd', true);
+  }
+
+
+
+});

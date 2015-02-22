@@ -1,0 +1,62 @@
+
+          <div class="container-fluid blackbar">
+              <%= render 'layouts/messages' %>
+              <div class = "row" id = "popup-row"> 
+              
+                <div class = "popup col-xs-12 col-sm-5"> 
+
+                  <%= link_to @item.link, target: "_blank" do %>
+                    <%= image_tag(@item.image, alt: @item.title, :class => "popped center-block") %>
+                  <% end %>
+                </div>
+
+                <div class = "info col-xs-12 col-sm-7"> 
+
+                    <%= link_to @item.link, target: "_blank" do %>  
+                      <h3><%= truncate(@item.title, :length => 75) %></h3>
+                    <% end %>
+                    <!-- <%= raw @item.description %> -->
+
+                    </br>                  
+
+                    <% if @item.price > 0.01  %>
+
+                    <a class="btn btn-primary" id="fancybox_out" href= <%= @item.link %> target="_blank"><%= number_to_currency(@item.price, precision: 0) %> on Amazon</a>
+
+                    <% else %>
+
+                    <a class="btn btn-primary" id="fancybox_out" href= <%= @item.link %> role="button" target="_blank">Find it on Amazon</a>
+
+                    <% end %>
+
+                    </br> 
+                    </br> 
+
+                    <ul class="share-buttons">
+                      <li class = "fb"><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Finsidegift.com&t=Inside%20Gift" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><%= image_tag("simple_icons_black/Facebook.png") %></a></li>
+                      <li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Finsidegift.com&text=Inside%20Gift:%20http%3A%2F%2Finsidegift.com" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20'  + encodeURIComponent(document.URL)); return false;"><%= image_tag("simple_icons_black/Twitter.png") %></a></li>
+                      <li><a href="https://plus.google.com/share?url=http%3A%2F%2Finsidegift.com" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><%= image_tag("simple_icons_black/Google+.png") %></a></li>
+                      <li><a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Finsidegift.com&description=A%20curated%20shopping%20guide%20for%20the%20women%20in%20your%20life" target="_blank" title="Pin it" onclick="window.open('http://pinterest.com/pin/create/button/?url=' + encodeURIComponent(document.URL) + '&description=' +  encodeURIComponent(document.title)); return false;"><%= image_tag("simple_icons_black/Pinterest.png") %></a></li>
+                      <li><a href="mailto:?subject=Inside%20Gift&body=A%20curated%20shopping%20guide%20for%20the%20women%20in%20your%20life:%20http%3A%2F%2Finsidegift.com" target="_blank" title="Email" onclick="window.open('mailto:?subject=' + encodeURIComponent(document.title) + '&body=' +  encodeURIComponent(document.URL)); return false;"><%= image_tag("simple_icons_black/Email.png") %></a></li>
+                    </ul>
+
+                </div>
+              </div>
+
+              <div class = "popup2 col-xs-12 col-sm-12"> 
+
+                <div class = "row product-row">
+                <% @category.each do |category| %>
+                    <h2 class = "popular">Popular from <%= category.name %></h2>
+
+                    <% category.reload.items.order( 'impression_count DESC' ).where.not(:title => @item.title).take(4).each do |item| %> 
+                      <%= render 'categories/item', item: item %>
+                    <% end %>
+
+                <% end %>
+                </div>
+
+              </div>
+
+            </div>
+

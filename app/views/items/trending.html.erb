@@ -1,0 +1,47 @@
+
+
+	  <%  if params[:recipient].present? && params[:price].present?%>
+
+	    <h1>Trending Gifts for <%= params[:recipient].pluralize.titleize %> Under $<%= params[:price] %></h1>
+
+	  <% elsif params[:recipient].present? %>
+		<h1>Trending Gifts for <%= params[:recipient].pluralize.titleize %></h1>
+
+	  <% elsif 	params[:price].present? %>
+	    <h1>Trending Gifts Under $<%= params[:price] %></h1>
+
+	  <% else %>
+
+	  <h1>Trending Gifts</h1>
+
+	  <% end %>
+
+	  
+	<div class = "row filter_row">
+		<div class = "filters">
+
+			<div class = "col-sm-9 filter-group">
+			</div>
+
+		</div>
+	</div>
+
+
+                <div class = "row product-row">
+                <% @category.each do |category| %>
+
+
+                    <h2 class = "popular">Popular from
+                    <%= link_to(category_path(Category.find_by slug: category.slug), class: "titlers")  do %>
+						<%= category.name %>
+					<% end %>
+                    </h2>
+
+                    <% category.reload.items.order( 'impression_count DESC' ).take(4).each do |item| %> 
+                      <%= render 'categories/item2', item: item %>
+                    <% end %>
+
+                <% end %>
+                </div>
+
+              </div>

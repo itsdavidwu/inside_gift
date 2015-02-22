@@ -1,0 +1,24 @@
+
+	<div class = "col-xs-12 col-sm-3">
+		<div class = "boxer2">
+			<div class = "box2">
+				<% if item.price < 0.01 %>
+
+
+				<h4 class = "bills">Price Varies</h4>
+
+				<% else %>
+
+				<h4 class = "bills"><%= number_to_currency(item.price, precision: 0) %> </h4>
+
+				<% end %>
+
+				<span class = "frame"></span>
+					<%= link_to item_path(item.to_param), :class => 'fancybox2 fancy2' , :target=> '_parent' do  %>
+						<%= image_tag(item.image, alt: item.title) %>
+						<span class = "text-content"><span><h4><%= truncate(item.title, :length => 48) %></h4></span></span>
+					<% end %>
+			</div>
+		</div>
+	</div>
+	
