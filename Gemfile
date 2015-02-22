@@ -6,6 +6,7 @@ gem 'rails', '4.0.5'
 # Use sqlite3 as the database for Active Record
 group :development do
   gem 'sqlite3'
+  gem 'quiet_assets'
 end
 
 group :production do
