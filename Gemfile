@@ -8,6 +8,12 @@ group :development do
   gem 'sqlite3'
 end
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'sass-rails', '~> 4.0.2'
 gem 'uglifier', '>= 1.3.0'
