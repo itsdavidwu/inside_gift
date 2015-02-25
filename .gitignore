@@ -18,4 +18,4 @@
 # Ignore amazon stuff initializers
 /config/initializers/secret_token.rb
 /config/initializers/amazon-ecs.rb
-
+/config/initializers/gibbon.rb
